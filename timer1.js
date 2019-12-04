@@ -1,14 +1,20 @@
-let beepInterval = process.argv.slice(2);
+let input = process.argv.slice(2);
 
-// for (let i = 0; i < beepInterval.length; i++) {
+const beepInterval = input
+	.map(x => (x = Number(x)))
+	.filter(element => {
+		if (isNaN(element) || element < 0) {
+			return false;
+		}
+		return true;
+	});
+
+
+
 for (let x of beepInterval) {
-  setInterval(() => {
-    process.stdout.write('\x07');
-    process.stdout.write(x);
-  }, x * 1000);
+	setTimeout(() => {
+		process.stdout.write("\x07");
+
+		// console.log(x);
+	}, x * 1000);
 }
-
-
-// console.log(beepInterval)
-// process.stdout.write(beepInterval);
-// process.stdout.write('\n');
